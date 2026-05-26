@@ -21,8 +21,11 @@ def main():
     model.fit(X_train, y_train)
 
     # Save model
-    os.makedirs("artifacts", exist_ok=True)
-    model_path = os.path.join("artifacts", "model.pkl")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    ARTIFACT_DIR = os.path.join(BASE_DIR, "artifacts")
+
+    os.makedirs(ARTIFACT_DIR, exist_ok=True)
+    model_path = os.path.join(ARTIFACT_DIR, "model.pkl")
     joblib.dump(model, model_path)
 
     # Save a tiny metrics file
